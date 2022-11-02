@@ -1,27 +1,22 @@
 package main.java.com.lab;
 
+import java.io.OutputStream;
 import java.util.Map;
 
 public class OutputDevice {
 
-    public void writeMessage(String mess) {
-        System.out.println(mess);
-    }
+    OutputStream outputStream;
 
-    public void writeMessage(Double mess) {
-        System.out.println(mess);
-    }
-
-    public void writeMessage(int numericalMessage) {
-        System.out.println(numericalMessage);
+    public OutputDevice() {
+        this.outputStream = System.out;
     }
 
     public <K, V> void writeMessage(Map<K, V> mapMessage){
-        System.out.println(mapMessage);
+        outputStream.write(mapMessage.toString().getBytes());
     }
 
     public <T> void writeMessage(T message) {
-        System.out.println(message);
+        outputStream.write(message.toString().getBytes());
     }
 
     public void writeMessage(String[] messArr) {
