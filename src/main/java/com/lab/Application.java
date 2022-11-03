@@ -99,6 +99,36 @@ public class Application {
         System.out.println(this.inputDevice.nextLine());
     }
 
+    private void askUserForFile(){
+        boolean fileFound = false;
+        while(!fileFound){
+            String fileName = this.inputDevice.nextLine();
+            try(FileInputStream fileInputStream = new FileInputStream(fileName)){
+                fileFound = true;
+                outputDevice.writeMessage(new String(fileInputStream.readAllBytes()));
+            } catch (IOException e){
+                outputDevice.writeMessage("File not found, try another file name: ");
+            }
+        }
+    }
+
+    private void writeRandomNumbers(){
+        boolean fileFound = false;
+        while(!fileFound){
+            String fileName = this.inputDevice.nextLine();
+            try(FileOutputStream fileOutputStream = new FileOutputStream(fileName)){
+                fileFound = true;
+                int[] numbers = inputDevice.getNumbers(10);
+                for(int num: numbers){
+                    fileOutputStream.write((num + "\n").getBytes());
+                }
+            } catch (IOException e){
+                outputDevice.writeMessage("File not found, try another file name: ");
+            }
+        }
+
+    }
+
     public void run(){
 
         if (arg.equals("words")){
@@ -111,7 +141,9 @@ public class Application {
 //        this.testFruitComparison();
 //        this.testFruitStreams();
 //        this.inputDevice.nextLine();
-        this.testOutputInputFile();
+//        this.testOutputInputFile();
+//        this.askUserForFile();
+        this.writeRandomNumbers();
 
 
     }

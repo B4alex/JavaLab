@@ -6,8 +6,8 @@ import java.io.FileOutputStream;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        InputDevice inputDevice = new InputDevice(new FileInputStream("file.txt"));
-        OutputDevice outputDevice = new OutputDevice(new FileOutputStream("file.txt"));
+        InputDevice inputDevice = new InputDevice();
+        OutputDevice outputDevice = new OutputDevice();
 
         outputDevice.writeMessage(args);
         Application mainApp = new Application(inputDevice, outputDevice, args[0]);
