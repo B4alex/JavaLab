@@ -5,10 +5,39 @@ import main.java.com.lab.fruits.Banana;
 import main.java.com.lab.fruits.Fruit;
 import main.java.com.lab.fruits.Mango;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class InputDevice {
+
+    InputStream inputStream;
+
+    public InputDevice() {
+        this.inputStream = System.in;
+    }
+
+    public InputDevice(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    public String nextLine(){
+        StringBuilder sb = new StringBuilder();
+        int n;
+        try {
+            n = inputStream.read();
+            while(n != -1 && n !='\n'){
+                sb.append((char) n);
+                n = inputStream.read();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return sb.toString();
+    }
 
     public String getType() {
         return "random";

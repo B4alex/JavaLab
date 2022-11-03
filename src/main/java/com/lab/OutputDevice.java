@@ -1,5 +1,6 @@
 package main.java.com.lab;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
 
@@ -11,12 +12,24 @@ public class OutputDevice {
         this.outputStream = System.out;
     }
 
+    public OutputDevice(OutputStream outputStream) {
+        this.outputStream = outputStream;
+    }
+
     public <K, V> void writeMessage(Map<K, V> mapMessage){
-        outputStream.write(mapMessage.toString().getBytes());
+        try {
+            outputStream.write(mapMessage.toString().getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public <T> void writeMessage(T message) {
-        outputStream.write(message.toString().getBytes());
+        try {
+            outputStream.write(message.toString().getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void writeMessage(String[] messArr) {

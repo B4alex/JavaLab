@@ -103,7 +103,8 @@ public class Application {
 
 //        this.testFruitStuff();
 //        this.testFruitComparison();
-        this.testFruitStreams();
+//        this.testFruitStreams();
+        this.inputDevice.nextLine();
 
 
 
