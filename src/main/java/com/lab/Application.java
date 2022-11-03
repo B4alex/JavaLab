@@ -4,6 +4,7 @@ import main.java.com.lab.fruits.Fruit;
 import main.java.com.lab.fruits.Peelable;
 import main.java.com.lab.fruits.SeedRemovable;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -93,6 +94,11 @@ public class Application {
         fruits.stream().map(f -> f.getSugar_content() / f.getWater_content()).forEach(outputDevice::writeMessage);
     }
 
+    private void testOutputInputFile(){
+        this.outputDevice.writeMessage("HELLO");
+        System.out.println(this.inputDevice.nextLine());
+    }
+
     public void run(){
 
         if (arg.equals("words")){
@@ -104,8 +110,8 @@ public class Application {
 //        this.testFruitStuff();
 //        this.testFruitComparison();
 //        this.testFruitStreams();
-        this.inputDevice.nextLine();
-
+//        this.inputDevice.nextLine();
+        this.testOutputInputFile();
 
 
     }
